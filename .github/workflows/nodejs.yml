@@ -6,14 +6,9 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-<<<<<<< HEAD
   schedule:
     # 아침 8시는 UTC 로는 11pm 
     - cron: "0 23 * * *"
-=======
-  pull_request:
-    branches: [ master ]
->>>>>>> 14b0a27abc2ea264767218b04853b2856c94f3c1
 
 jobs:
   build:
@@ -34,8 +29,6 @@ jobs:
     - run: npm start
       env:
         CI: true
-<<<<<<< HEAD
+
         WEBHOOKS: ${{ secrets.WEBHOOKS }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
-=======
->>>>>>> 14b0a27abc2ea264767218b04853b2856c94f3c1
