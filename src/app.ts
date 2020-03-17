@@ -20,4 +20,7 @@ import discord from './lib/discord';
 
     }
   });
-})();
+})().catch(e => {
+  console.error(e);
+  core.setFailed(e);
+});
