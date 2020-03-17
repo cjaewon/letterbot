@@ -10,14 +10,13 @@ export const parse = async() => {
   const titles: string[] = $('item > title').map((i, element) => $(element).text()).get();
   const links: string[] = $('item > link').map((i, element) => $(element).text()).get();
 
-  console.log(titles);
-
   let content = '';
 
   for (let i = 0; i < 3; i++){
     content += `[${titles[i]}](${links[i]})\n`;
   }
 
+  console.log('✅ 뉴스 파싱 완료');
 
   return content;
 }
