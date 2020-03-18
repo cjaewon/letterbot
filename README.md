@@ -9,7 +9,7 @@
 일단 먼저 웹후크를 생성해줍니다.
 ![image](https://user-images.githubusercontent.com/32125218/76847761-e7f8c200-6885-11ea-8c69-5c4de5e545f2.png)
 
-깃허브 secrets WEATHER_API_KEY ([WETHAER API])(https://openweathermap.org/api) 저장합니다.
+깃허브 secrets WEATHER_API_KEY ([WETHAER API](https://openweathermap.org/api)) 저장합니다.
 웹훅이 한개라면 url을 `https://discordapp.com/api/thisiswebhook` 이런 식으로 적어주시기만 하면 되고
 만약 웹훅이 두개 이상이라면 콤마로 구분해주시면 됩니다.
 ```
