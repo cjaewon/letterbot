@@ -35,18 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core = __importStar(require("@actions/core"));
 var axios_1 = __importDefault(require("axios"));
 var weather_json_1 = __importDefault(require("./data/weather.json"));
 exports.parse = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -54,7 +46,7 @@ exports.parse = function () { return __awaiter(void 0, void 0, void 0, function 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                token = core.getInput('WEATHER_API_KEY');
+                token = process.env.WEATHER_API_KEY;
                 city = 'Busan';
                 return [4 /*yield*/, axios_1.default.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + token + "&units=metric")];
             case 1:

@@ -66,9 +66,9 @@ var discord_1 = __importDefault(require("./lib/discord"));
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                core.debug('Hello World');
+                core.debug(JSON.stringify(process.env));
                 core.debug(core.getInput('WEBHOOKS'));
-                WEBHOOKS = core.getInput('WEBHOOKS');
+                WEBHOOKS = process.env.WEBHOOKS;
                 if (WEBHOOKS == null)
                     throw new Error('웹훅을 찾을 수 없어요.');
                 webhookList = WEBHOOKS.split(',');
