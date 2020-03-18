@@ -67,6 +67,7 @@ var discord_1 = __importDefault(require("./lib/discord"));
         switch (_a.label) {
             case 0:
                 core.debug('Hello World');
+                core.debug(core.getInput('WEBHOOKS'));
                 WEBHOOKS = core.getInput('WEBHOOKS');
                 if (WEBHOOKS == null)
                     throw new Error('웹훅을 찾을 수 없어요.');

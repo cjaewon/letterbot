@@ -5,7 +5,7 @@ import cheerio from 'cheerio';
 import weatherData from './data/weather.json';
 
 export const parse = async() => {
-  const token = core.getInput('WEATHER_API_KEY');
+  const token = process.env.WEATHER_API_KEY;
   const city = 'Busan';
 
   const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${token}&units=metric`);
