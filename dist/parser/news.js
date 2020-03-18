@@ -52,11 +52,11 @@ exports.parse = function () { return __awaiter(void 0, void 0, void 0, function 
                 $ = cheerio_1.default.load(html, { xmlMode: true });
                 titles = $('item > title').map(function (i, element) { return $(element).text(); }).get();
                 links = $('item > link').map(function (i, element) { return $(element).text(); }).get();
-                console.log(titles);
                 content = '';
                 for (i = 0; i < 3; i++) {
                     content += "[" + titles[i] + "](" + links[i] + ")\n";
                 }
+                console.log('✅ 뉴스 파싱 완료');
                 return [2 /*return*/, content];
         }
     });

@@ -46,10 +46,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var core = __importStar(require("@actions/core"));
 var parser_1 = __importDefault(require("./parser"));
 var discord_1 = __importDefault(require("./lib/discord"));
 // import slack from './lib/slack';
@@ -58,7 +66,10 @@ var discord_1 = __importDefault(require("./lib/discord"));
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                WEBHOOKS = 'https://discordapp.com/api/webhooks/689420473448398934/5NK8F9vx1lae2kNkIxAag8ZHjBCtc_BCs2g1x1zthfBkKKxDGM4lpPyrfQphe9A7auQR,https://discordapp.com/api/webhooks/689479424944635912/8w3uqVmanZoslndC5KfGcEZH16LOzZg1oKpWOKSzz-7XIzpxQp6hp6JmfM58nmus-FTA';
+                core.debug('Hello World');
+                WEBHOOKS = core.getInput('WEBHOOKS');
+                if (WEBHOOKS == null)
+                    throw new Error('웹훅을 찾을 수 없어요.');
                 webhookList = WEBHOOKS.split(',');
                 return [4 /*yield*/, parser_1.default()];
             case 1:
@@ -68,7 +79,6 @@ var discord_1 = __importDefault(require("./lib/discord"));
                         switch (_a.label) {
                             case 0:
                                 if (!url.includes('discordapp.com')) return [3 /*break*/, 2];
-                                console.log(parsed);
                                 return [4 /*yield*/, discord_1.default(__assign(__assign({}, parsed), { url: url }))];
                             case 1:
                                 _a.sent();
@@ -84,4 +94,7 @@ var discord_1 = __importDefault(require("./lib/discord"));
                 return [2 /*return*/];
         }
     });
-}); })();
+}); })().catch(function (e) {
+    console.error(e);
+    core.setFailed(e);
+});

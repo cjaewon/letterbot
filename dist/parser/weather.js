@@ -60,6 +60,7 @@ exports.parse = function () { return __awaiter(void 0, void 0, void 0, function 
             case 1:
                 response = _a.sent();
                 data = response.data;
+                console.log('✅ 날씨 파싱 완료');
                 return [2 /*return*/, {
                         weather: weather_json_1.default[data.weather[0].id],
                         temp: "(" + data.main.temp_min + "\uB3C4 ~ " + data.main.temp_max + "\uB3C4)"
