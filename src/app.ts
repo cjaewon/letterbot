@@ -4,10 +4,9 @@ import discord from './lib/discord';
 // import slack from './lib/slack';
 
 (async () => {
-  core.debug(JSON.stringify(process.env));
-  core.debug(core.getInput('WEBHOOKS'));
   const WEBHOOKS = process.env.WEBHOOKS;
-  if (WEBHOOKS == null) throw new Error('웹훅을 찾을 수 없어요.');
+  if (WEBHOOKS == null) throw new Error('웹훅 리스트를 찾을 수 없어요.');
+
   const webhookList = WEBHOOKS.split(',');
 
   const parsed = await parser();
