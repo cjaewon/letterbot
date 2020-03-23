@@ -10,7 +10,7 @@ const parser = async() => {
   return {
     weather: weatherContent,
     news: newsContent,
-    date: dateContent
+    date: dateContent,
   };
 };
 

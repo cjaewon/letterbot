@@ -10,13 +10,18 @@ export const parse = async() => {
   const titles: string[] = $('item > title').map((i, element) => $(element).text()).get();
   const links: string[] = $('item > link').map((i, element) => $(element).text()).get();
 
-  let content = '';
+  let discordContent = '';
+  let slackContent = '';
 
   for (let i = 0; i < 3; i++){
-    content += `[${titles[i]}](${links[i]})\n`;
+    discordContent += `[${titles[i]}](${links[i]})\n`;
+    slackContent += `<${links[i]}|${titles[i]}>\n`;
   }
-
+  
   console.log('✅ 뉴스 파싱 완료');
 
-  return content;
+  return {
+    discordContent,
+    slackContent,
+  };
 }

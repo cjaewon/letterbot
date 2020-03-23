@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import parser from './parser';
 import discord from './lib/discord';
-// import slack from './lib/slack';
+import slack from './lib/slack';
 
 (async () => {
   const WEBHOOKS = process.env.WEBHOOKS;
@@ -14,13 +14,24 @@ import discord from './lib/discord';
   webhookList.map(async url => {
     if (url.includes('discordapp.com')) { // discord webhook
       await discord({
-        ...parsed,
-        url
+        weather: parsed.weather,
+        news: parsed.news.discordContent,
+        date: parsed.date,
+
+        url,
       });
     } else if (url.includes('hooks.slack.com')) { //slack webhook
+      await slack({
+        weather: parsed.weather,
+        news: parsed.news.slackContent,
+        date: parsed.date,
 
+        url,
+      })
     }
   });
+
+  console.log('✅ 웹훅 발송 완료');
 })().catch(e => {
   console.error(e);
   core.setFailed(e);
