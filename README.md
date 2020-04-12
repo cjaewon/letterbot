@@ -2,6 +2,8 @@
 📨 Github Action 으로 만든 디스코드, 슬랙에 매일 아침 8시에 브리핑을 해주는 봇입니다
 
 ![Node.js CI](https://github.com/cjaewon/letterbot/workflows/Node.js%20CI/badge.svg)
+![cjaewon/letterbot License](https://img.shields.io/github/license/cjaewon/letterbot?color=blue)
+![stars](https://img.shields.io/github/stars/cjaewon/letterbot?color=yellow&style=social)
 
 ### 사용 예시
 

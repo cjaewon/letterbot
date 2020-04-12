@@ -19,7 +19,6 @@ export default async({ weather, news, date, url }: slackArgs) => {
   };
 
   message.attachments.push({
-    
     color: '#928BFF',
     pretext: `📨 ${today} 편지가 왔어요!`,
 
