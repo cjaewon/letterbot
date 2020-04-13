@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -60,17 +49,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core = __importStar(require("@actions/core"));
 var parser_1 = __importDefault(require("./parser"));
 var discord_1 = __importDefault(require("./lib/discord"));
-// import slack from './lib/slack';
+var slack_1 = __importDefault(require("./lib/slack"));
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var WEBHOOKS, webhookList, parsed;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                core.debug(JSON.stringify(process.env));
-                core.debug(core.getInput('WEBHOOKS'));
                 WEBHOOKS = process.env.WEBHOOKS;
                 if (WEBHOOKS == null)
-                    throw new Error('웹훅을 찾을 수 없어요.');
+                    throw new Error('웹훅 리스트를 찾을 수 없어요.');
                 webhookList = WEBHOOKS.split(',');
                 return [4 /*yield*/, parser_1.default()];
             case 1:
@@ -80,18 +67,31 @@ var discord_1 = __importDefault(require("./lib/discord"));
                         switch (_a.label) {
                             case 0:
                                 if (!url.includes('discordapp.com')) return [3 /*break*/, 2];
-                                return [4 /*yield*/, discord_1.default(__assign(__assign({}, parsed), { url: url }))];
+                                return [4 /*yield*/, discord_1.default({
+                                        weather: parsed.weather,
+                                        news: parsed.news.discordContent,
+                                        date: parsed.date,
+                                        url: url,
+                                    })];
                             case 1:
                                 _a.sent();
-                                return [3 /*break*/, 3];
+                                return [3 /*break*/, 4];
                             case 2:
-                                if (url.includes('hooks.slack.com')) { //slack webhook
-                                }
-                                _a.label = 3;
-                            case 3: return [2 /*return*/];
+                                if (!url.includes('hooks.slack.com')) return [3 /*break*/, 4];
+                                return [4 /*yield*/, slack_1.default({
+                                        weather: parsed.weather,
+                                        news: parsed.news.slackContent,
+                                        date: parsed.date,
+                                        url: url,
+                                    })];
+                            case 3:
+                                _a.sent();
+                                _a.label = 4;
+                            case 4: return [2 /*return*/];
                         }
                     });
                 }); });
+                console.log('✅ 웹훅 발송 완료');
                 return [2 /*return*/];
         }
     });

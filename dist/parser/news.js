@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = __importDefault(require("axios"));
 var cheerio_1 = __importDefault(require("cheerio"));
 exports.parse = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var response, html, $, titles, links, content, i;
+    var response, html, $, titles, links, discordContent, slackContent, i;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, axios_1.default.get('https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko')];
@@ -52,12 +52,17 @@ exports.parse = function () { return __awaiter(void 0, void 0, void 0, function 
                 $ = cheerio_1.default.load(html, { xmlMode: true });
                 titles = $('item > title').map(function (i, element) { return $(element).text(); }).get();
                 links = $('item > link').map(function (i, element) { return $(element).text(); }).get();
-                content = '';
+                discordContent = '';
+                slackContent = '';
                 for (i = 0; i < 3; i++) {
-                    content += "[" + titles[i] + "](" + links[i] + ")\n";
+                    discordContent += "[" + titles[i] + "](" + links[i] + ")\n";
+                    slackContent += "<" + links[i] + "|" + titles[i] + ">\n";
                 }
                 console.log('✅ 뉴스 파싱 완료');
-                return [2 /*return*/, content];
+                return [2 /*return*/, {
+                        discordContent: discordContent,
+                        slackContent: slackContent,
+                    }];
         }
     });
 }); };
