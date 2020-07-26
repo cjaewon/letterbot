@@ -12,7 +12,7 @@ import slack from './lib/slack';
   const parsed = await parser();
 
   webhookList.map(async url => {
-    if (url.includes('discordapp.com')) { // discord webhook
+    if (url.includes('discord.com') || url.includes("discordapp.com")) { // discord webhook
       await discord({
         weather: parsed.weather,
         news: parsed.news.discordContent,
