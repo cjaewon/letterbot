@@ -22,7 +22,7 @@ export default async({ weather, news, date, url }: discordArgs) => {
   };
 
   message.embeds.push({
-    color: '0x928BFF',
+    color: 0x928BFF,
     fields: [
       {
         name: '📅 날짜 / 한국',
