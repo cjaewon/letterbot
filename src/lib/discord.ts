@@ -47,6 +47,7 @@ export default async({ weather, news, date, url }: discordArgs) => {
   });
 
   message.embeds.push({
+    color: 0x928BFF,
     title: '📰 뉴스 / 구글',
     description: news
   });
