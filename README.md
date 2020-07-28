@@ -15,7 +15,7 @@
 ![image](https://user-images.githubusercontent.com/32125218/77283427-aa75b800-6d0f-11ea-9f29-d694dec8830b.png)
 
 ### ⚙️ 설정법
-**cjaewon/letterbot을 먼저 Fork 해주세요. / 또는 클론 하셔서 레포를 만드셔도 됩니다.**
+**cjaewon/letterbot을 먼저 Fork 해주세요. / 또는 클론 하셔서 레포를 만드셔도 됩니다.**. 
 봇 작동을 위해서는 깃허브 secrets에 WEATHER_API_KEY 와 WEBHOOKS가 필요합니다
 
 ![image](https://user-images.githubusercontent.com/32125218/76913894-b28ebb80-68fb-11ea-978c-57ffe17dd2bc.png)
@@ -25,9 +25,9 @@ WEATHER_API_KEY는 [Weather Api](https://openweathermap.org/api) 에서 생성�
 
 #### WEBHOOKS
 WEBHOOKS는 웹훅 링크를 콤마로 구분한 것입니다
-한개 일때는
+##### 한개 일때
 `https://webhooklinkexample.letterbot`
-두개 이상일떄는
+##### 두개 이상 
 ```
 https://webhooklinkexample1.letterbot,
 https://webhooklinkexample2.letterbot,
