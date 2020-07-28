@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   # Only Test
-#   push:
-#    branches:
-#     - master
+  push:
+   branches:
+    - master
   schedule:
     # 아침 8시는 UTC 로는 11pm 
     - cron: "0 23 * * *"
