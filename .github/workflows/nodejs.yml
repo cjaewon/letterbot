@@ -27,11 +27,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build
-    - run: npm start
+    
+    - uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - name: Running the bot 🔥
       env:
         CI: true
-
         WEBHOOKS: ${{ secrets.WEBHOOKS }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+    - run: |
+        npm run build
+        npm start
+
