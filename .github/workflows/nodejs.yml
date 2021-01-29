@@ -41,6 +41,7 @@ jobs:
         WEBHOOKS: ${{ secrets.WEBHOOKS }}
         WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
       run: |
+        npm install
         npm run build
         npm start
 
